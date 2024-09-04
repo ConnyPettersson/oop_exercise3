@@ -86,6 +86,23 @@ public static final Scanner sc = new Scanner(System.in);
     }
 
     public static void removeCar() {
+        System.out.println("Enter ID of the car you want removed: ");
+        int idToRemove = sc.nextInt();
+        sc.nextLine();
+
+         Car carToRemove = null;
+         for(Car car : cars) {
+             if(car.ID() == idToRemove) {
+                 carToRemove = car;
+                 break;
+             }
+         }
+         if(carToRemove != null) {
+             cars.remove(carToRemove);
+             System.out.println("Car removed: " + carToRemove);
+         }else {
+             System.out.println("Car with ID " + idToRemove + " not found");
+         }
 
     }
 }

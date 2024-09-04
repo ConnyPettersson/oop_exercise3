@@ -15,7 +15,8 @@ public static final Scanner sc = new Scanner(System.in);
             System.out.println("Choose an option");
             System.out.println("1. Add car");
             System.out.println("2. Show all cars");
-            System.out.println("3. Exit");
+            System.out.println("3. Remove car by ID");
+            System.out.println("4. Exit");
             int choice = sc.nextInt();
             sc.nextLine();
             switch (choice){
@@ -26,6 +27,9 @@ public static final Scanner sc = new Scanner(System.in);
                     showCar();
                     break;
                 case 3:
+                    removeCar();
+                    break;
+                case 4:
                     running = false;
                     break;
                 default:
@@ -78,5 +82,10 @@ public static final Scanner sc = new Scanner(System.in);
 
     public static void showCar() {
         Consumer<Car> printCar = System.out::println;
+        cars.forEach(printCar);
+    }
+
+    public static void removeCar() {
+
     }
 }

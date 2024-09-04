@@ -1,6 +1,7 @@
 package org.example;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 public class CarApp {
 public static final ArrayList<Car> cars = new ArrayList<>();
@@ -30,8 +31,8 @@ public static final Scanner sc = new Scanner(System.in);
                 default:
                     System.out.println("Choose 1, 2 or 3!");
             }
-
         }
+            sc.close();
     }
 
     private static void addCar() {
@@ -39,10 +40,13 @@ public static final Scanner sc = new Scanner(System.in);
         String brand = sc.nextLine();
         System.out.println("Enter type of model: ");
         String model = sc.nextLine();
-        System.out.println("Choose a color: ");
-        String color = sc.nextLine();
+        System.out.println("Enter year: ");
+        int year = sc.nextInt();
+        System.out.println("Enter ID: ");
+        int id = sc.nextInt();
+        sc.nextLine();
 
-        Car newCar = new Car(brand, model, color);
+        Car newCar = new Car(brand, model, year, id);
         cars.add(newCar);
         System.out.println("Car: " + newCar + " is added.");
 
@@ -56,10 +60,14 @@ public static final Scanner sc = new Scanner(System.in);
                 brand = sc.nextLine();
                 System.out.println("Enter type of model: ");
                 model = sc.nextLine();
-                System.out.println("Choose a color: ");
-                color = sc.nextLine();
+                System.out.println("Enter year: ");
+                year = sc.nextInt();
+                System.out.println("Enter ID: ");
+                id = sc.nextInt();
+                sc.nextLine();
 
-                Car anotherCar = new Car(brand, model, color);
+
+                Car anotherCar = new Car(brand, model, year, id);
                 cars.add(anotherCar);
                 System.out.println("Car: " + anotherCar + " is added.");
             }else {
@@ -69,8 +77,6 @@ public static final Scanner sc = new Scanner(System.in);
     }
 
     public static void showCar() {
-        for (Car car : cars) {
-            System.out.println(car);
-        }
+        Consumer<Car> printCar = System.out::println;
     }
 }
